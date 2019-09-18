@@ -13,6 +13,10 @@
     </head>
     <body>
         <h1>Hola Lista Estudiante Materia</h1>
-        ${visualizar.getCedula()}&nbsp;${visualizar.getNombre()}&nbsp;${visualizar.getApellido1()}&nbsp;${visualizar.getApellido2()}
+        ${visualizar.getCedula()}
+        &nbsp;${visualizar.getNombre()}
+        &nbsp;${visualizar.getApellido1()}
+        &nbsp;${visualizar.getApellido2()}
+         &nbsp;${visualizar.getDocentes().getIdusu()}
     </body>
 </html>

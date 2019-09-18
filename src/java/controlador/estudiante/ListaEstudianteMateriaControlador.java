@@ -27,6 +27,7 @@ public class ListaEstudianteMateriaControlador {
             ModelAndView mav = new ModelAndView();
             
             model.addAttribute("visualizar",usuario);
+            
             mav.setViewName("listaestudiantemateria");
             
             return mav ;

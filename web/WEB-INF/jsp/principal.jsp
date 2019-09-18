@@ -21,7 +21,7 @@
                 <ul>
                      <c:forEach  var="dato2" items="${proceso}}"  varStatus="status2" >
                    
-                        <li><a href="#"><c:out value="${dato2.getNombre()}"></c:out></a>
+                         <li><a href="#" ><c:out value="${dato2.getNombre()}"></c:out></a>
                             
                         </li>
                          
