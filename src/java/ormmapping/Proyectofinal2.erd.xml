@@ -1,135 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Model quotesql="1" tablecharset="" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
-  <Entity name="banco" schema="proyecto" Unlogged="false" PKConstraintName="banco_pkey" PKClustered="0">
-    <Column name="idbanco">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>sequence</IDGenerator>
-      <IDGeneratorKey>proyecto.banco_idbanco_seq</IDGeneratorKey>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Identificador de cada pregunta del banco de preguntas</Comment>
-      <UserTypes>
-        <UserType DBType="256">serial</UserType>
-      </UserTypes>
-    </Column>
-    <Column name="enunciado">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>300</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Texto del pregunta o enunciado</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="imagen">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>60</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>ruta y nombre de la imagen que acompaña al enunciado</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="tema">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>8</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Tema de la materia al que corresponde el enunciado</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="subtema">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>8</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Subtítulo del tema</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="dificultad">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>42</Type>
-      <Length>1</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Grado de dificultad de la pregunta: 1 a 5</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="activo">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>1</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>True, vigente. False, dado de baja</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="iddicta">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.dicta.iddicta</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Dicta</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="idtipo">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.tipo.idtipo</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Tipo</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="dictaidusu">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.dicta.idusu</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla dicta</Comment>
-      <UserTypes/>
-    </Column>
-    <Comment>Banco de preguntas o enunciados para las evaluaciones</Comment>
-  </Entity>
   <Entity name="carreras" schema="proyecto" Unlogged="false" PKConstraintName="carreras_pkey" PKClustered="0">
     <Column name="idcarr">
       <PrimaryKey>true</PrimaryKey>
@@ -280,7 +151,7 @@
     <Column name="idcarr">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.materias.idcarr</ReferencedColumn>
+      <ReferencedColumn>proyecto.grupo.idcarr</ReferencedColumn>
       <Type>9</Type>
       <Length>0</Length>
       <Nullable>true</Nullable>
@@ -293,7 +164,7 @@
     <Column name="sigla">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.materias.sigla</ReferencedColumn>
+      <ReferencedColumn>proyecto.grupo.sigla</ReferencedColumn>
       <Type>31</Type>
       <Length>6</Length>
       <Nullable>true</Nullable>
@@ -313,6 +184,18 @@
       <Unique>false</Unique>
       <Index>false</Index>
       <Comment>Año que se dicta la materia</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="materiasparalelo">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>proyecto.grupo.paralelo</ReferencedColumn>
+      <Type>42</Type>
+      <Length>1</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
       <UserTypes/>
     </Column>
     <Comment>Asignación de materias a docentes</Comment>
@@ -345,163 +228,7 @@
     </Column>
     <Comment>Tabla de los docentes</Comment>
   </Entity>
-  <Entity name="evaluaciones" schema="proyecto" Unlogged="false" PKConstraintName="evaluaciones_pkey" PKClustered="0">
-    <Column name="idprog">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.programacion.idprog</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Programacion</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="idexamen">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.examenes.idexamen</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Examenes</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="nota">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>8</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Nota del examen</Comment>
-      <UserTypes/>
-    </Column>
-    <Comment>Contiene los examenes asignados a cada uniersitario</Comment>
-  </Entity>
-  <Entity name="examenes" schema="proyecto" Unlogged="false" PKConstraintName="examenes_pkey" PKClustered="0">
-    <Column name="idexamen">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>sequence</IDGenerator>
-      <IDGeneratorKey>proyecto.examenes_idexamen_seq</IDGeneratorKey>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Identificador del examen</Comment>
-      <UserTypes>
-        <UserType DBType="256">serial</UserType>
-      </UserTypes>
-    </Column>
-    <Column name="nombre">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>15</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Nombre del examen</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="fecha">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>17</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Fecha del examen</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="hora_ini">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>19</Type>
-      <Length>6</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Hora de inicio del examen</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="hora_fin">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>19</Type>
-      <Length>6</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Hora de finalización del examen</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="penalizacion">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>8</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>porcentaje de penalización a las respuestas incorrectas</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="activo">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>1</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>True, vigente. False, dado de baja</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="iddicta">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.dicta.iddicta</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla dicta</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="dictaidusu">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.dicta.idusu</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Comment>Evaluaciones preparadas por un docente</Comment>
-  </Entity>
-  <Entity name="materias" schema="proyecto" Unlogged="false" PKConstraintName="materias_pkey" PKClustered="0">
+  <Entity name="grupo" schema="proyecto" Unlogged="false" PKConstraintName="materias_pkey" PKClustered="0">
     <Column name="idcarr">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>true</ForeignKey>
@@ -525,6 +252,18 @@
       <Unique>false</Unique>
       <Index>false</Index>
       <Comment>Sigla de la materia</Comment>
+      <UserTypes/>
+    </Column>
+    <Column name="paralelo">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>42</Type>
+      <Length>1</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <Comment>Paralelo de la materia</Comment>
       <UserTypes/>
     </Column>
     <Column name="nombre">
@@ -573,18 +312,6 @@
       <Unique>false</Unique>
       <Index>false</Index>
       <Comment>1, Primer semestre; 2, Segundo semestre; A, Anual; N, Nivelación; V, Verano</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="paralelo">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>42</Type>
-      <Length>1</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Paralelo de la materia</Comment>
       <UserTypes/>
     </Column>
     <Column name="activo">
@@ -641,6 +368,17 @@
       <Comment>True, vigente. False, dado de baja</Comment>
       <UserTypes/>
     </Column>
+    <Column name="descripcion">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>false</ForeignKey>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
     <Comment>Contiene los menús definidos en el sistema</Comment>
   </Entity>
   <Entity name="mepro" schema="proyecto" Unlogged="false" PKConstraintName="mepro_pkey" PKClustered="0">
@@ -671,102 +409,6 @@
       <UserTypes/>
     </Column>
     <Comment>Relaciona las tablas Menus con Procesos</Comment>
-  </Entity>
-  <Entity name="opciones" schema="proyecto" Unlogged="false" PKConstraintName="opciones_pkey" PKClustered="0">
-    <Column name="idopcion">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>sequence</IDGenerator>
-      <IDGeneratorKey>proyecto.opciones_idopcion_seq</IDGeneratorKey>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Identifcador de las opciones</Comment>
-      <UserTypes>
-        <UserType DBType="256">serial</UserType>
-      </UserTypes>
-    </Column>
-    <Column name="idbanco">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.banco.idbanco</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Banco</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="opcion">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>100</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Una opción de respuesta a la pregunta</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="correcta">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>1</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>True, respuesta correcta. False, respueta incorrecta</Comment>
-      <UserTypes/>
-    </Column>
-    <Comment>Contiene las diferentes opciones de respuesta para cada pregunta del banco de preguntas</Comment>
-  </Entity>
-  <Entity name="preguntas" schema="proyecto" Unlogged="false" PKConstraintName="preguntas_pkey" PKClustered="0">
-    <Column name="idexamen">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.examenes.idexamen</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Examenes</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="idbanco">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.banco.idbanco</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Banco</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="ponderacion">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>8</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Valoración de cada pregunta</Comment>
-      <UserTypes/>
-    </Column>
-    <Comment>Contiene las preguntas para un examen específico</Comment>
   </Entity>
   <Entity name="procesos" schema="proyecto" Unlogged="false" PKConstraintName="procesos_pkey" PKClustered="0">
     <Column name="idpro">
@@ -854,7 +496,7 @@
     <Column name="idcarr">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.materias.idcarr</ReferencedColumn>
+      <ReferencedColumn>proyecto.grupo.idcarr</ReferencedColumn>
       <Type>9</Type>
       <Length>0</Length>
       <Nullable>true</Nullable>
@@ -867,7 +509,7 @@
     <Column name="sigla">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.materias.sigla</ReferencedColumn>
+      <ReferencedColumn>proyecto.grupo.sigla</ReferencedColumn>
       <Type>31</Type>
       <Length>6</Length>
       <Nullable>true</Nullable>
@@ -889,49 +531,19 @@
       <Comment>Año que se dicta la materia</Comment>
       <UserTypes/>
     </Column>
+    <Column name="materiasparalelo">
+      <PrimaryKey>false</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>proyecto.grupo.paralelo</ReferencedColumn>
+      <Type>42</Type>
+      <Length>1</Length>
+      <Nullable>true</Nullable>
+      <IDGenerator>native</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
     <Comment>Asignación de materias a estudiantes</Comment>
-  </Entity>
-  <Entity name="respuestas" schema="proyecto" Unlogged="false" PKConstraintName="respuestas_pkey" PKClustered="0">
-    <Column name="idprog">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.evaluaciones.idprog</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Evaluaciones</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="idexamen">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.evaluaciones.idexamen</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Evaluaciones</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="idopcion">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.opciones.idopcion</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Referencia a la tabla Opciones</Comment>
-      <UserTypes/>
-    </Column>
-    <Comment>Contiene las respuestas de los estudiantes, de acuerdo a las diferentes opciones de respuestas</Comment>
   </Entity>
   <Entity name="roles" schema="proyecto" Unlogged="false" PKConstraintName="roles_pkey" PKClustered="0">
     <Column name="idrol">
@@ -1003,48 +615,6 @@
       <UserTypes/>
     </Column>
     <Comment>Relaciona las tablas Menus con Procesos</Comment>
-  </Entity>
-  <Entity name="tipo" schema="proyecto" Unlogged="false" PKConstraintName="tipo_pkey" PKClustered="0">
-    <Column name="idtipo">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>sequence</IDGenerator>
-      <IDGeneratorKey>proyecto.tipo_idtipo_seq</IDGeneratorKey>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Identificador de tipo de evaluación</Comment>
-      <UserTypes>
-        <UserType DBType="256">serial</UserType>
-      </UserTypes>
-    </Column>
-    <Column name="nombre">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>27</Type>
-      <Length>40</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>Nombre del tipo de evaluación: Falso Verdadero, Simple o Multiple</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="activo">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>1</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <Comment>True, vigente. False, dado de baja</Comment>
-      <UserTypes/>
-    </Column>
-    <Comment>Especificación del tipo de evaluación</Comment>
   </Entity>
   <Entity name="universitarios" schema="proyecto" Unlogged="false" PKConstraintName="universitarios_pkey" PKClustered="0">
     <Column name="idusu">
@@ -1255,47 +825,6 @@
     proyecto.usurol ur,
     proyecto.roles r
   WHERE ((u.idusu = ur.idusu) AND (ur.idrol = r.idrol));" schema="proyecto" Materialized="false"/>
-  <View name="examen" CreateStmt="create view examen as  SELECT u.idusu,
-    u.nombre,
-    u.apellido1,
-    u.apellido2,
-    ev.nota
-   FROM proyecto.usuarios u,
-    proyecto.datos d,
-    proyecto.universitarios un,
-    proyecto.programacion p,
-    proyecto.evaluaciones ev
-  WHERE (((((u.idusu = d.idusu) AND (u.idusu = un.idusu)) AND (un.idusu = p.idusu)) AND (p.idprog = ev.idprog)) AND (ev.nota &gt;= 51));" schema="proyecto" Materialized="false"/>
-  <ForeignKey name="fkbanco423148">
-    <ReferenceTable>banco</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>dicta</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>iddicta</Column>
-      <Column>dictaidusu</Column>
-    </Columns>
-    <RefColumns>
-      <Column>iddicta</Column>
-      <Column>idusu</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="fkbanco45027">
-    <ReferenceTable>banco</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>tipo</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>idtipo</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idtipo</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="fkdatos267216">
     <ReferenceTable>datos</ReferenceTable>
     <ReferenceSchema>proyecto</ReferenceSchema>
@@ -1327,17 +856,19 @@
   <ForeignKey name="fkdicta501654">
     <ReferenceTable>dicta</ReferenceTable>
     <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>materias</ReferencedTable>
+    <ReferencedTable>grupo</ReferencedTable>
     <ReferencedSchema>proyecto</ReferencedSchema>
     <OnUpdate>No action</OnUpdate>
     <OnDelete>No action</OnDelete>
     <Columns>
       <Column>idcarr</Column>
       <Column>sigla</Column>
+      <Column>materiasparalelo</Column>
     </Columns>
     <RefColumns>
       <Column>idcarr</Column>
       <Column>sigla</Column>
+      <Column>paralelo</Column>
     </RefColumns>
   </ForeignKey>
   <ForeignKey name="fkdocentes899557">
@@ -1354,52 +885,8 @@
       <Column>idusu</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="fkevaluacion987711">
-    <ReferenceTable>evaluaciones</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>programacion</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>idprog</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idprog</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="fkevaluacion700762">
-    <ReferenceTable>evaluaciones</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>examenes</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>idexamen</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idexamen</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="fkexamenes328322">
-    <ReferenceTable>examenes</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>dicta</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>iddicta</Column>
-      <Column>dictaidusu</Column>
-    </Columns>
-    <RefColumns>
-      <Column>iddicta</Column>
-      <Column>idusu</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="fkmaterias750405">
-    <ReferenceTable>materias</ReferenceTable>
+    <ReferenceTable>grupo</ReferenceTable>
     <ReferenceSchema>proyecto</ReferenceSchema>
     <ReferencedTable>carreras</ReferencedTable>
     <ReferencedSchema>proyecto</ReferencedSchema>
@@ -1440,48 +927,6 @@
       <Column>idpro</Column>
     </RefColumns>
   </ForeignKey>
-  <ForeignKey name="fkopciones128098">
-    <ReferenceTable>opciones</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>banco</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>idbanco</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idbanco</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="fkpreguntas358389">
-    <ReferenceTable>preguntas</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>examenes</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>idexamen</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idexamen</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="fkpreguntas133210">
-    <ReferenceTable>preguntas</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>banco</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>idbanco</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idbanco</Column>
-    </RefColumns>
-  </ForeignKey>
   <ForeignKey name="fkprogramaci263409">
     <ReferenceTable>programacion</ReferenceTable>
     <ReferenceSchema>proyecto</ReferenceSchema>
@@ -1499,47 +944,19 @@
   <ForeignKey name="fkprogramaci480900">
     <ReferenceTable>programacion</ReferenceTable>
     <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>materias</ReferencedTable>
+    <ReferencedTable>grupo</ReferencedTable>
     <ReferencedSchema>proyecto</ReferencedSchema>
     <OnUpdate>No action</OnUpdate>
     <OnDelete>No action</OnDelete>
     <Columns>
       <Column>idcarr</Column>
       <Column>sigla</Column>
+      <Column>materiasparalelo</Column>
     </Columns>
     <RefColumns>
       <Column>idcarr</Column>
       <Column>sigla</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="fkrespuestas544463">
-    <ReferenceTable>respuestas</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>evaluaciones</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>idprog</Column>
-      <Column>idexamen</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idprog</Column>
-      <Column>idexamen</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="fkrespuestas633362">
-    <ReferenceTable>respuestas</ReferenceTable>
-    <ReferenceSchema>proyecto</ReferenceSchema>
-    <ReferencedTable>opciones</ReferencedTable>
-    <ReferencedSchema>proyecto</ReferencedSchema>
-    <OnUpdate>No action</OnUpdate>
-    <OnDelete>No action</OnDelete>
-    <Columns>
-      <Column>idopcion</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idopcion</Column>
+      <Column>paralelo</Column>
     </RefColumns>
   </ForeignKey>
   <ForeignKey name="fkrolme514925">

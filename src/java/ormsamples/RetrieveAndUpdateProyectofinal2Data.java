@@ -9,9 +9,6 @@ public class RetrieveAndUpdateProyectofinal2Data {
 	public void retrieveAndUpdateTestData() throws PersistentException {
 		PersistentTransaction t = proyecto.Proyectofinal2PersistentManager.instance().getSession().beginTransaction();
 		try {
-			proyecto.Banco lproyectoBanco = proyecto.BancoDAO.loadBancoByQuery(null, null);
-			// Update the properties of the persistent object
-			proyecto.BancoDAO.save(lproyectoBanco);
 			proyecto.Carreras lproyectoCarreras = proyecto.CarrerasDAO.loadCarrerasByQuery(null, null);
 			// Update the properties of the persistent object
 			proyecto.CarrerasDAO.save(lproyectoCarreras);
@@ -24,24 +21,12 @@ public class RetrieveAndUpdateProyectofinal2Data {
 			proyecto.Docentes lproyectoDocentes = proyecto.DocentesDAO.loadDocentesByQuery(null, null);
 			// Update the properties of the persistent object
 			proyecto.DocentesDAO.save(lproyectoDocentes);
-			proyecto.Evaluaciones lproyectoEvaluaciones = proyecto.EvaluacionesDAO.loadEvaluacionesByQuery(null, null);
-			// Update the properties of the persistent object
-			proyecto.EvaluacionesDAO.save(lproyectoEvaluaciones);
-			proyecto.Examenes lproyectoExamenes = proyecto.ExamenesDAO.loadExamenesByQuery(null, null);
-			// Update the properties of the persistent object
-			proyecto.ExamenesDAO.save(lproyectoExamenes);
 			proyecto.Materias lproyectoMaterias = proyecto.MateriasDAO.loadMateriasByQuery(null, null);
 			// Update the properties of the persistent object
 			proyecto.MateriasDAO.save(lproyectoMaterias);
 			proyecto.Menus lproyectoMenus = proyecto.MenusDAO.loadMenusByQuery(null, null);
 			// Update the properties of the persistent object
 			proyecto.MenusDAO.save(lproyectoMenus);
-			proyecto.Opciones lproyectoOpciones = proyecto.OpcionesDAO.loadOpcionesByQuery(null, null);
-			// Update the properties of the persistent object
-			proyecto.OpcionesDAO.save(lproyectoOpciones);
-			proyecto.Preguntas lproyectoPreguntas = proyecto.PreguntasDAO.loadPreguntasByQuery(null, null);
-			// Update the properties of the persistent object
-			proyecto.PreguntasDAO.save(lproyectoPreguntas);
 			proyecto.Procesos lproyectoProcesos = proyecto.ProcesosDAO.loadProcesosByQuery(null, null);
 			// Update the properties of the persistent object
 			proyecto.ProcesosDAO.save(lproyectoProcesos);
@@ -51,9 +36,6 @@ public class RetrieveAndUpdateProyectofinal2Data {
 			proyecto.Roles lproyectoRoles = proyecto.RolesDAO.loadRolesByQuery(null, null);
 			// Update the properties of the persistent object
 			proyecto.RolesDAO.save(lproyectoRoles);
-			proyecto.Tipo lproyectoTipo = proyecto.TipoDAO.loadTipoByQuery(null, null);
-			// Update the properties of the persistent object
-			proyecto.TipoDAO.save(lproyectoTipo);
 			proyecto.Universitarios lproyectoUniversitarios = proyecto.UniversitariosDAO.loadUniversitariosByQuery(null, null);
 			// Update the properties of the persistent object
 			proyecto.UniversitariosDAO.save(lproyectoUniversitarios);
@@ -63,9 +45,6 @@ public class RetrieveAndUpdateProyectofinal2Data {
 			proyecto.V_usuariorol lproyectoV_usuariorol = proyecto.V_usuariorolDAO.loadV_usuariorolByQuery(null, null);
 			// Update the properties of the persistent object
 			proyecto.V_usuariorolDAO.save(lproyectoV_usuariorol);
-			proyecto.Examen lproyectoExamen = proyecto.ExamenDAO.loadExamenByQuery(null, null);
-			// Update the properties of the persistent object
-			proyecto.ExamenDAO.save(lproyectoExamen);
 			t.commit();
 		}
 		catch (Exception e) {

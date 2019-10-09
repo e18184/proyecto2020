@@ -349,14 +349,6 @@ public class DictaDAO {
 				dicta.getIdcarr().dicta.remove(dicta);
 			}
 			
-			proyecto.Banco[] lBancos = dicta.banco.toArray();
-			for(int i = 0; i < lBancos.length; i++) {
-				lBancos[i].setIddicta(null);
-			}
-			proyecto.Examenes[] lExameness = dicta.examenes.toArray();
-			for(int i = 0; i < lExameness.length; i++) {
-				lExameness[i].setIddicta(null);
-			}
 			return delete(dicta);
 		}
 		catch(Exception e) {
@@ -377,14 +369,6 @@ public class DictaDAO {
 				dicta.getIdcarr().dicta.remove(dicta);
 			}
 			
-			proyecto.Banco[] lBancos = dicta.banco.toArray();
-			for(int i = 0; i < lBancos.length; i++) {
-				lBancos[i].setIddicta(null);
-			}
-			proyecto.Examenes[] lExameness = dicta.examenes.toArray();
-			for(int i = 0; i < lExameness.length; i++) {
-				lExameness[i].setIddicta(null);
-			}
 			try {
 				session.delete(dicta);
 				return true;

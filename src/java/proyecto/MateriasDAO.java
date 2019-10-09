@@ -19,10 +19,10 @@ import org.hibernate.LockMode;
 import java.util.List;
 
 public class MateriasDAO {
-	public static Materias loadMateriasByORMID(proyecto.Carreras idcarr, String sigla) throws PersistentException {
+	public static Materias loadMateriasByORMID(proyecto.Carreras idcarr, String sigla, char paralelo) throws PersistentException {
 		try {
 			PersistentSession session = Proyectofinal2PersistentManager.instance().getSession();
-			return loadMateriasByORMID(session, idcarr, sigla);
+			return loadMateriasByORMID(session, idcarr, sigla, paralelo);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class MateriasDAO {
 		}
 	}
 	
-	public static Materias getMateriasByORMID(proyecto.Carreras idcarr, String sigla) throws PersistentException {
+	public static Materias getMateriasByORMID(proyecto.Carreras idcarr, String sigla, char paralelo) throws PersistentException {
 		try {
 			PersistentSession session = Proyectofinal2PersistentManager.instance().getSession();
-			return getMateriasByORMID(session, idcarr, sigla);
+			return getMateriasByORMID(session, idcarr, sigla, paralelo);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,10 +41,10 @@ public class MateriasDAO {
 		}
 	}
 	
-	public static Materias loadMateriasByORMID(proyecto.Carreras idcarr, String sigla, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Materias loadMateriasByORMID(proyecto.Carreras idcarr, String sigla, char paralelo, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = Proyectofinal2PersistentManager.instance().getSession();
-			return loadMateriasByORMID(session, idcarr, sigla, lockMode);
+			return loadMateriasByORMID(session, idcarr, sigla, paralelo, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -52,10 +52,10 @@ public class MateriasDAO {
 		}
 	}
 	
-	public static Materias getMateriasByORMID(proyecto.Carreras idcarr, String sigla, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Materias getMateriasByORMID(proyecto.Carreras idcarr, String sigla, char paralelo, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			PersistentSession session = Proyectofinal2PersistentManager.instance().getSession();
-			return getMateriasByORMID(session, idcarr, sigla, lockMode);
+			return getMateriasByORMID(session, idcarr, sigla, paralelo, lockMode);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -63,11 +63,12 @@ public class MateriasDAO {
 		}
 	}
 	
-	public static Materias loadMateriasByORMID(PersistentSession session, proyecto.Carreras idcarr, String sigla) throws PersistentException {
+	public static Materias loadMateriasByORMID(PersistentSession session, proyecto.Carreras idcarr, String sigla, char paralelo) throws PersistentException {
 		try {
 			Materias materias = new proyecto.Materias();
 			materias.setORM_Idcarr(idcarr);
 			materias.setSigla(sigla);
+			materias.setParalelo(paralelo);
 			
 			return (Materias) session.load(proyecto.Materias.class, materias);
 		}
@@ -77,11 +78,12 @@ public class MateriasDAO {
 		}
 	}
 	
-	public static Materias getMateriasByORMID(PersistentSession session, proyecto.Carreras idcarr, String sigla) throws PersistentException {
+	public static Materias getMateriasByORMID(PersistentSession session, proyecto.Carreras idcarr, String sigla, char paralelo) throws PersistentException {
 		try {
 			Materias materias = new proyecto.Materias();
 			materias.setORM_Idcarr(idcarr);
 			materias.setSigla(sigla);
+			materias.setParalelo(paralelo);
 			
 			return (Materias) session.get(proyecto.Materias.class, materias);
 		}
@@ -91,11 +93,12 @@ public class MateriasDAO {
 		}
 	}
 	
-	public static Materias loadMateriasByORMID(PersistentSession session, proyecto.Carreras idcarr, String sigla, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Materias loadMateriasByORMID(PersistentSession session, proyecto.Carreras idcarr, String sigla, char paralelo, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			Materias materias = new proyecto.Materias();
 			materias.setORM_Idcarr(idcarr);
 			materias.setSigla(sigla);
+			materias.setParalelo(paralelo);
 			
 			return (Materias) session.load(proyecto.Materias.class, materias, lockMode);
 		}
@@ -105,11 +108,12 @@ public class MateriasDAO {
 		}
 	}
 	
-	public static Materias getMateriasByORMID(PersistentSession session, proyecto.Carreras idcarr, String sigla, org.hibernate.LockMode lockMode) throws PersistentException {
+	public static Materias getMateriasByORMID(PersistentSession session, proyecto.Carreras idcarr, String sigla, char paralelo, org.hibernate.LockMode lockMode) throws PersistentException {
 		try {
 			Materias materias = new proyecto.Materias();
 			materias.setORM_Idcarr(idcarr);
 			materias.setSigla(sigla);
+			materias.setParalelo(paralelo);
 			
 			return (Materias) session.get(proyecto.Materias.class, materias, lockMode);
 		}

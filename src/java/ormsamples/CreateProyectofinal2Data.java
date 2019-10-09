@@ -32,9 +32,6 @@ public class CreateProyectofinal2Data {
 		
 		PersistentTransaction t = proyecto.Proyectofinal2PersistentManager.instance().getSession().beginTransaction();
 		try {
-			proyecto.Banco lproyectoBanco = proyecto.BancoDAO.createBanco();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : preguntas, activo, dificultad, tema, enunciado
-			proyecto.BancoDAO.save(lproyectoBanco);
 			proyecto.Carreras lproyectoCarreras = proyecto.CarrerasDAO.createCarreras();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : materias, activo, nombre
 			proyecto.CarrerasDAO.save(lproyectoCarreras);
@@ -47,36 +44,21 @@ public class CreateProyectofinal2Data {
 			proyecto.Docentes lproyectoDocentes = proyecto.DocentesDAO.createDocentes();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : dicta, auxiliar
 			proyecto.DocentesDAO.save(lproyectoDocentes);
-			proyecto.Evaluaciones lproyectoEvaluaciones = proyecto.EvaluacionesDAO.createEvaluaciones();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : idopcion
-			proyecto.EvaluacionesDAO.save(lproyectoEvaluaciones);
-			proyecto.Examenes lproyectoExamenes = proyecto.ExamenesDAO.createExamenes();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : preguntas, evaluaciones, activo, penalizacion, nombre
-			proyecto.ExamenesDAO.save(lproyectoExamenes);
 			proyecto.Materias lproyectoMaterias = proyecto.MateriasDAO.createMaterias();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : activo, paralelo, periodo, plan, cargahoraria, nombre, sigla
+			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : activo, periodo, plan, cargahoraria, nombre, sigla
 			proyecto.MateriasDAO.save(lproyectoMaterias);
 			proyecto.Menus lproyectoMenus = proyecto.MenusDAO.createMenus();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : idpro, idrol, activo, nombre
 			proyecto.MenusDAO.save(lproyectoMenus);
-			proyecto.Opciones lproyectoOpciones = proyecto.OpcionesDAO.createOpciones();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : idprog, correcta, opcion
-			proyecto.OpcionesDAO.save(lproyectoOpciones);
-			proyecto.Preguntas lproyectoPreguntas = proyecto.PreguntasDAO.createPreguntas();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : ponderacion
-			proyecto.PreguntasDAO.save(lproyectoPreguntas);
 			proyecto.Procesos lproyectoProcesos = proyecto.ProcesosDAO.createProcesos();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : idmenu, enlace, nombre
 			proyecto.ProcesosDAO.save(lproyectoProcesos);
 			proyecto.Programacion lproyectoProgramacion = proyecto.ProgramacionDAO.createProgramacion();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : evaluaciones
+			// Initialize the properties of the persistent object here
 			proyecto.ProgramacionDAO.save(lproyectoProgramacion);
 			proyecto.Roles lproyectoRoles = proyecto.RolesDAO.createRoles();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : idmenu, idusu, activo, nombre
 			proyecto.RolesDAO.save(lproyectoRoles);
-			proyecto.Tipo lproyectoTipo = proyecto.TipoDAO.createTipo();
-			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : activo, nombre
-			proyecto.TipoDAO.save(lproyectoTipo);
 			proyecto.Universitarios lproyectoUniversitarios = proyecto.UniversitariosDAO.createUniversitarios();
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : ru
 			proyecto.UniversitariosDAO.save(lproyectoUniversitarios);
@@ -86,9 +68,6 @@ public class CreateProyectofinal2Data {
 			proyecto.V_usuariorol lproyectoV_usuariorol = proyecto.V_usuariorolDAO.createV_usuariorol();
 			// Initialize the properties of the persistent object here
 			proyecto.V_usuariorolDAO.save(lproyectoV_usuariorol);
-			proyecto.Examen lproyectoExamen = proyecto.ExamenDAO.createExamen();
-			// Initialize the properties of the persistent object here
-			proyecto.ExamenDAO.save(lproyectoExamen);
 			t.commit();
 		}
 		catch (Exception e) {

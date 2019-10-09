@@ -35,6 +35,8 @@ public class Materias implements Serializable {
 			return false;
 		if ((getSigla() != null && !getSigla().equals(materias.getSigla())) || (getSigla() == null && materias.getSigla() != null))
 			return false;
+		if (getParalelo() != materias.getParalelo())
+			return false;
 		return true;
 	}
 	
@@ -44,6 +46,7 @@ public class Materias implements Serializable {
 			hashcode = hashcode + (int) getIdcarr().getORMID();
 		}
 		hashcode = hashcode + (getSigla() == null ? 0 : getSigla().hashCode());
+		hashcode = hashcode + (int) getParalelo();
 		return hashcode;
 	}
 	
@@ -89,6 +92,8 @@ public class Materias implements Serializable {
 	
 	private String sigla;
 	
+	private char paralelo;
+	
 	private String nombre;
 	
 	private short cargahoraria;
@@ -96,8 +101,6 @@ public class Materias implements Serializable {
 	private String plan;
 	
 	private char periodo;
-	
-	private char paralelo;
 	
 	private boolean activo;
 	
@@ -248,7 +251,7 @@ public class Materias implements Serializable {
 	public final proyecto.ProgramacionSetCollection programacion = new proyecto.ProgramacionSetCollection(this, _ormAdapter, ORMConstants.KEY_MATERIAS_PROGRAMACION, ORMConstants.KEY_PROGRAMACION_IDCARR, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
-		return String.valueOf(((getIdcarr() == null) ? "" : String.valueOf(getIdcarr().getORMID())) + " " + getSigla());
+		return String.valueOf(((getIdcarr() == null) ? "" : String.valueOf(getIdcarr().getORMID())) + " " + getSigla() + " " + getParalelo());
 	}
 	
 }

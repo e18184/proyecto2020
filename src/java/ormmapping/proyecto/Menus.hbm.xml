@@ -24,6 +24,11 @@ License Type: Evaluation
 				True, vigente. False, dado de baja
 			</meta>
 		</property>
+		<property name="descripcion" column="descripcion" type="string" length="255" not-null="false" lazy="false">
+			<meta attribute="field-description">
+				descripcion del menu
+			</meta>
+		</property>
 		<set name="ORM_Idrol" table="rolme" schema="proyecto" lazy="true" cascade="save-update,lock" inverse="true">
 			<key column="idmenu" not-null="true"/>
 			<many-to-many column="idrol" class="proyecto.Roles">

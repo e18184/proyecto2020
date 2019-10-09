@@ -19,15 +19,12 @@ License Type: Evaluation
 		<many-to-one name="idcarr" cascade="lock" class="proyecto.Materias" not-null="false" lazy="proxy" access="field">
 			<column name="idcarr"/>
 			<column name="sigla"/>
+			<column name="materiasparalelo"/>
 		</many-to-one>
 		<property name="gestion" column="gestion" type="string" length="4" not-null="false" lazy="false">
 			<meta attribute="field-description">
 				A&#241;o que se dicta la materia
 			</meta>
 		</property>
-		<set name="ORM_Evaluaciones" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="idprog" not-null="true"/>
-			<one-to-many class="proyecto.Evaluaciones"/>
-		</set>
 	</class>
 </hibernate-mapping>

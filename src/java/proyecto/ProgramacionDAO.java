@@ -331,10 +331,6 @@ public class ProgramacionDAO {
 				programacion.getIdcarr().programacion.remove(programacion);
 			}
 			
-			proyecto.Evaluaciones[] lEvaluacioness = programacion.evaluaciones.toArray();
-			for(int i = 0; i < lEvaluacioness.length; i++) {
-				lEvaluacioness[i].setIdprog(null);
-			}
 			return delete(programacion);
 		}
 		catch(Exception e) {
@@ -353,10 +349,6 @@ public class ProgramacionDAO {
 				programacion.getIdcarr().programacion.remove(programacion);
 			}
 			
-			proyecto.Evaluaciones[] lEvaluacioness = programacion.evaluaciones.toArray();
-			for(int i = 0; i < lEvaluacioness.length; i++) {
-				lEvaluacioness[i].setIdprog(null);
-			}
 			try {
 				session.delete(programacion);
 				return true;

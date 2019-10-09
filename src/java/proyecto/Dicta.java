@@ -47,17 +47,6 @@ public class Dicta implements Serializable {
 		return hashcode;
 	}
 	
-	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_DICTA_BANCO) {
-			return ORM_banco;
-		}
-		else if (key == ORMConstants.KEY_DICTA_EXAMENES) {
-			return ORM_examenes;
-		}
-		
-		return null;
-	}
-	
 	private void this_setOwner(Object owner, int key) {
 		if (key == ORMConstants.KEY_DICTA_IDUSU) {
 			this.idusu = (proyecto.Docentes) owner;
@@ -69,10 +58,6 @@ public class Dicta implements Serializable {
 	}
 	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
-		public java.util.Set getSet(int key) {
-			return this_getSet(key);
-		}
-		
 		public void setOwner(Object owner, int key) {
 			this_setOwner(owner, key);
 		}
@@ -106,10 +91,6 @@ public class Dicta implements Serializable {
 	private proyecto.Materias idcarr;
 	
 	private String gestion;
-	
-	private java.util.Set ORM_banco = new java.util.HashSet();
-	
-	private java.util.Set ORM_examenes = new java.util.HashSet();
 	
 	/**
 	 * Identificador de la asignación de materias
@@ -186,26 +167,6 @@ public class Dicta implements Serializable {
 	private proyecto.Materias getORM_Idcarr() {
 		return idcarr;
 	}
-	
-	private void setORM_Banco(java.util.Set value) {
-		this.ORM_banco = value;
-	}
-	
-	private java.util.Set getORM_Banco() {
-		return ORM_banco;
-	}
-	
-	public final proyecto.BancoSetCollection banco = new proyecto.BancoSetCollection(this, _ormAdapter, ORMConstants.KEY_DICTA_BANCO, ORMConstants.KEY_BANCO_IDDICTA, ORMConstants.KEY_MUL_ONE_TO_MANY);
-	
-	private void setORM_Examenes(java.util.Set value) {
-		this.ORM_examenes = value;
-	}
-	
-	private java.util.Set getORM_Examenes() {
-		return ORM_examenes;
-	}
-	
-	public final proyecto.ExamenesSetCollection examenes = new proyecto.ExamenesSetCollection(this, _ormAdapter, ORMConstants.KEY_DICTA_EXAMENES, ORMConstants.KEY_EXAMENES_IDDICTA, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getIddicta() + " " + ((getIdusu() == null) ? "" : String.valueOf(getIdusu().getORMID())));

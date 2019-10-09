@@ -8,6 +8,7 @@ License Type: Evaluation
 	<class name="proyecto.V_usuariorol" table="v_usuariorol" schema="proyecto" lazy="false">
 		<id name="id" column="id" type="long" unsaved-value="0">
 			<generator class="native">
+				<param name="schema">proyecto</param>
 			</generator>
 		</id>
 		<property name="idusu" column="idusu" type="integer" not-null="false" lazy="false"/>

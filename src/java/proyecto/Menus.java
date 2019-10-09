@@ -45,6 +45,8 @@ public class Menus implements Serializable {
 	
 	private boolean activo;
 	
+	private String descripcion;
+	
 	private java.util.Set ORM_idrol = new java.util.HashSet();
 	
 	private java.util.Set ORM_idpro = new java.util.HashSet();
@@ -95,6 +97,20 @@ public class Menus implements Serializable {
 		return activo;
 	}
 	
+	/**
+	 * descripcion del menu
+	 */
+	public void setDescripcion(String value) {
+		this.descripcion = value;
+	}
+	
+	/**
+	 * descripcion del menu
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
+	
 	private void setORM_Idrol(java.util.Set value) {
 		this.ORM_idrol = value;
 	}
@@ -109,7 +125,7 @@ public class Menus implements Serializable {
 		this.ORM_idpro = value;
 	}
 	
-	public java.util.Set getORM_Idpro() {
+	private java.util.Set getORM_Idpro() {
 		return ORM_idpro;
 	}
 	

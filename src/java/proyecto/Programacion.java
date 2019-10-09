@@ -21,14 +21,6 @@ public class Programacion implements Serializable {
 	public Programacion() {
 	}
 	
-	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_PROGRAMACION_EVALUACIONES) {
-			return ORM_evaluaciones;
-		}
-		
-		return null;
-	}
-	
 	private void this_setOwner(Object owner, int key) {
 		if (key == ORMConstants.KEY_PROGRAMACION_IDUSU) {
 			this.idusu = (proyecto.Universitarios) owner;
@@ -40,10 +32,6 @@ public class Programacion implements Serializable {
 	}
 	
 	org.orm.util.ORMAdapter _ormAdapter = new org.orm.util.AbstractORMAdapter() {
-		public java.util.Set getSet(int key) {
-			return this_getSet(key);
-		}
-		
 		public void setOwner(Object owner, int key) {
 			this_setOwner(owner, key);
 		}
@@ -57,8 +45,6 @@ public class Programacion implements Serializable {
 	private proyecto.Materias idcarr;
 	
 	private String gestion;
-	
-	private java.util.Set ORM_evaluaciones = new java.util.HashSet();
 	
 	/**
 	 * Identificador de la programación
@@ -139,16 +125,6 @@ public class Programacion implements Serializable {
 	private proyecto.Materias getORM_Idcarr() {
 		return idcarr;
 	}
-	
-	private void setORM_Evaluaciones(java.util.Set value) {
-		this.ORM_evaluaciones = value;
-	}
-	
-	private java.util.Set getORM_Evaluaciones() {
-		return ORM_evaluaciones;
-	}
-	
-	public final proyecto.EvaluacionesSetCollection evaluaciones = new proyecto.EvaluacionesSetCollection(this, _ormAdapter, ORMConstants.KEY_PROGRAMACION_EVALUACIONES, ORMConstants.KEY_EVALUACIONES_IDPROG, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	public String toString() {
 		return String.valueOf(getIdprog());

@@ -5,7 +5,7 @@ License Type: Evaluation
 -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="proyecto.Materias" table="materias" schema="proyecto" lazy="false">
+	<class name="proyecto.Materias" table="grupo" schema="proyecto" lazy="false">
 		<meta attribute="class-description">
 			Contiene las materias registradas en el sistema
 		</meta>
@@ -13,6 +13,7 @@ License Type: Evaluation
 			<key-many-to-one name="ORM_Idcarr" column="idcarr" class="proyecto.Carreras">
 			</key-many-to-one>
 			<key-property name="sigla" column="sigla" type="string"/>
+			<key-property name="paralelo" column="paralelo" type="character"/>
 		</composite-id>
 		<property name="nombre" column="nombre" type="string" length="40" not-null="true" lazy="false">
 			<meta attribute="field-description">
@@ -34,11 +35,6 @@ License Type: Evaluation
 				1, Primer semestre; 2, Segundo semestre; A, Anual; N, Nivelaci&#243;n; V, Verano
 			</meta>
 		</property>
-		<property name="paralelo" column="paralelo" type="character" length="1" not-null="true" lazy="false">
-			<meta attribute="field-description">
-				Paralelo de la materia
-			</meta>
-		</property>
 		<property name="activo" column="activo" type="boolean" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				True, vigente. False, dado de baja
@@ -48,6 +44,7 @@ License Type: Evaluation
 			<key not-null="false">
 				<column name="idcarr"/>
 				<column name="sigla"/>
+				<column name="materiasparalelo"/>
 			</key>
 			<one-to-many class="proyecto.Dicta"/>
 		</set>
@@ -55,6 +52,7 @@ License Type: Evaluation
 			<key not-null="false">
 				<column name="idcarr"/>
 				<column name="sigla"/>
+				<column name="materiasparalelo"/>
 			</key>
 			<one-to-many class="proyecto.Programacion"/>
 		</set>
