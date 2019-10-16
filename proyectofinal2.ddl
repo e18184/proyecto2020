@@ -11,7 +11,7 @@ COMMENT ON COLUMN proyecto.datos.idusu IS 'Referencia a la tabla Usuarios';
 COMMENT ON COLUMN proyecto.datos.login IS 'Nombre de acceso al sistema del usuario';
 COMMENT ON COLUMN proyecto.datos.password IS 'Clave encriptada del usuario';
 COMMENT ON COLUMN proyecto.datos.activo IS 'True, vigente. False, dado de baja';
-CREATE TABLE proyecto.dicta (iddicta serial NOT NULL, idusu int4 NOT NULL, idcarr int4, sigla char(6), gestion char(4), materiasparalelo char(1), CONSTRAINT dicta_pkey PRIMARY KEY (iddicta, idusu));
+CREATE TABLE proyecto.dicta (iddicta serial NOT NULL, idusu int4 NOT NULL, idcarr int4, sigla char(6), gestion char(4), materiasparalelo char(1), grupoid_grupo int4, CONSTRAINT dicta_pkey PRIMARY KEY (iddicta, idusu));
 COMMENT ON TABLE proyecto.dicta IS 'Asignación de materias a docentes';
 COMMENT ON COLUMN proyecto.dicta.iddicta IS 'Identificador de la asignación de materias';
 COMMENT ON COLUMN proyecto.dicta.idusu IS 'Referencia a la tabla Usuarios';
@@ -22,11 +22,10 @@ CREATE TABLE proyecto.docentes (idusu int4 NOT NULL, auxiliar bool NOT NULL, CON
 COMMENT ON TABLE proyecto.docentes IS 'Tabla de los docentes';
 COMMENT ON COLUMN proyecto.docentes.idusu IS 'Referencia a la tabla Usuarios';
 COMMENT ON COLUMN proyecto.docentes.auxiliar IS 'true, auxiliar de cátedra; false, docente';
-CREATE TABLE proyecto.grupo (idcarr int4 NOT NULL, sigla char(6) NOT NULL, paralelo char(1) NOT NULL, nombre varchar(40) NOT NULL, cargahoraria int2 NOT NULL, "plan" varchar(4) NOT NULL, periodo char(1) NOT NULL, activo bool NOT NULL, CONSTRAINT materias_pkey PRIMARY KEY (idcarr, sigla, paralelo));
-COMMENT ON TABLE proyecto.grupo IS 'Contiene las materias registradas en el sistema';
-COMMENT ON COLUMN proyecto.grupo.idcarr IS 'Identificador de la materia';
+CREATE TABLE proyecto.grupo (id_grupo SERIAL NOT NULL, idcarr int4 NOT NULL, sigla char(6) NOT NULL, nombre varchar(40) NOT NULL, cargahoraria int2 NOT NULL, "plan" varchar(4) NOT NULL, periodo char(1) NOT NULL, activo bool NOT NULL, grupo varchar(10) NOT NULL, CONSTRAINT materias_pkey PRIMARY KEY (id_grupo));
+COMMENT ON TABLE proyecto.grupo IS 'Contiene los grupo que tienen en el sistema';
+COMMENT ON COLUMN proyecto.grupo.idcarr IS 'Identificador de la grupo de la materia';
 COMMENT ON COLUMN proyecto.grupo.sigla IS 'Sigla de la materia';
-COMMENT ON COLUMN proyecto.grupo.paralelo IS 'Paralelo de la materia';
 COMMENT ON COLUMN proyecto.grupo.nombre IS 'Nombre de la materia';
 COMMENT ON COLUMN proyecto.grupo.cargahoraria IS 'Carga horaria (hrs/semana)';
 COMMENT ON COLUMN proyecto.grupo."plan" IS 'Año del plan de estudios en vigencia';
@@ -47,7 +46,7 @@ COMMENT ON COLUMN proyecto.procesos.idpro IS 'Identificador del proceso';
 COMMENT ON COLUMN proyecto.procesos.nombre IS 'Nombre del proceso';
 COMMENT ON COLUMN proyecto.procesos.enlace IS 'URL relativa del proceso';
 COMMENT ON COLUMN proyecto.procesos.descripcion IS 'Descripción del proceso u operación';
-CREATE TABLE proyecto.programacion (idprog serial NOT NULL, idusu int4, idcarr int4, sigla char(6), gestion char(4), materiasparalelo char(1), CONSTRAINT programacion_pkey PRIMARY KEY (idprog));
+CREATE TABLE proyecto.programacion (idprog serial NOT NULL, idusu int4, idcarr int4, sigla char(6), gestion char(4), materiasparalelo char(1), grupoid_grupo int4, CONSTRAINT programacion_pkey PRIMARY KEY (idprog));
 COMMENT ON TABLE proyecto.programacion IS 'Asignación de materias a estudiantes';
 COMMENT ON COLUMN proyecto.programacion.idprog IS 'Identificador de la programación';
 COMMENT ON COLUMN proyecto.programacion.idusu IS 'Referencia a la tabla Usuarios';
@@ -84,7 +83,7 @@ CREATE TABLE proyecto.usurol (idusu int4 NOT NULL, idrol int4 NOT NULL, CONSTRAI
 COMMENT ON TABLE proyecto.usurol IS 'Relaciona las tablas Usuarios con Roles';
 COMMENT ON COLUMN proyecto.usurol.idusu IS 'Referencia a la tabla Usuarios';
 COMMENT ON COLUMN proyecto.usurol.idrol IS 'Referencia a la tabla Roles';
-create view v_usuariorol as  SELECT row_number() OVER () AS id,
+create view proyecto.v_usuariorol as  SELECT row_number() OVER () AS id,
     u.idusu,
     u.nombre AS unombre,
     u.apellido1,
@@ -100,16 +99,27 @@ create view v_usuariorol as  SELECT row_number() OVER () AS id,
   WHERE ((u.idusu = ur.idusu) AND (ur.idrol = r.idrol));
 ALTER TABLE proyecto.datos ADD CONSTRAINT fkdatos267216 FOREIGN KEY (idusu) REFERENCES proyecto.usuarios (idusu) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.dicta ADD CONSTRAINT fkdicta698426 FOREIGN KEY (idusu) REFERENCES proyecto.docentes (idusu) ON UPDATE No action ON DELETE No action;
-ALTER TABLE proyecto.dicta ADD CONSTRAINT fkdicta501654 FOREIGN KEY (idcarr, sigla, materiasparalelo) REFERENCES proyecto.grupo (idcarr, sigla, paralelo) ON UPDATE No action ON DELETE No action;
+ALTER TABLE proyecto.dicta ADD CONSTRAINT fkdicta501654 FOREIGN KEY (grupoid_grupo) REFERENCES proyecto.grupo (id_grupo) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.docentes ADD CONSTRAINT fkdocentes899557 FOREIGN KEY (idusu) REFERENCES proyecto.usuarios (idusu) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.grupo ADD CONSTRAINT fkmaterias750405 FOREIGN KEY (idcarr) REFERENCES proyecto.carreras (idcarr) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.mepro ADD CONSTRAINT fkmepro122433 FOREIGN KEY (idmenu) REFERENCES proyecto.menus (idmenu) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.mepro ADD CONSTRAINT fkmepro242844 FOREIGN KEY (idpro) REFERENCES proyecto.procesos (idpro) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.programacion ADD CONSTRAINT fkprogramaci263409 FOREIGN KEY (idusu) REFERENCES proyecto.universitarios (idusu) ON UPDATE No action ON DELETE No action;
-ALTER TABLE proyecto.programacion ADD CONSTRAINT fkprogramaci480900 FOREIGN KEY (idcarr, sigla, materiasparalelo) REFERENCES proyecto.grupo (idcarr, sigla, paralelo) ON UPDATE No action ON DELETE No action;
+ALTER TABLE proyecto.programacion ADD CONSTRAINT fkprogramaci480900 FOREIGN KEY (grupoid_grupo) REFERENCES proyecto.grupo (id_grupo) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.rolme ADD CONSTRAINT fkrolme514925 FOREIGN KEY (idrol) REFERENCES proyecto.roles (idrol) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.rolme ADD CONSTRAINT fkrolme33944 FOREIGN KEY (idmenu) REFERENCES proyecto.menus (idmenu) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.universitarios ADD CONSTRAINT fkuniversita443786 FOREIGN KEY (idusu) REFERENCES proyecto.usuarios (idusu) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.usurol ADD CONSTRAINT fkusurol643637 FOREIGN KEY (idusu) REFERENCES proyecto.usuarios (idusu) ON UPDATE No action ON DELETE No action;
 ALTER TABLE proyecto.usurol ADD CONSTRAINT fkusurol734545 FOREIGN KEY (idrol) REFERENCES proyecto.roles (idrol) ON UPDATE No action ON DELETE No action;
-INSERT INTO proyecto.usuarios(idusu, nombre, apellido1, apellido2, sexo, f_nac, cedula, telefono, direccion, foto, activo) VALUES (1, 'Carlos', 'Perez', 'Cota', 'M', '24/09/2000', '4143805', '591673467', null, null, null);
+INSERT INTO proyecto.carreras(idcarr, nombre, direccion, telefono, activo) VALUES (1, 'Informatica', 'campus tejar', '6640265', true);
+INSERT INTO proyecto.carreras(idcarr, nombre, direccion, telefono, activo) VALUES (2, 'Civil', 'campus universitario', '6644444', true);
+INSERT INTO proyecto.usuarios(idusu, nombre, apellido1, apellido2, sexo, f_nac, cedula, telefono, direccion, foto, activo) VALUES (1, 'Carlos', 'Perez', 'Cota', 'M', '09/24/2000', '4143805', '591673467', 'barrio moto mendez', 'sin foto', true);
+INSERT INTO proyecto.usuarios(idusu, nombre, apellido1, apellido2, sexo, f_nac, cedula, telefono, direccion, foto, activo) VALUES (2, 'Richard Henry', 'Sivila', 'Rios', 'M', '09/24/1980', '4143506', '591673467', 'barrio aeropuerto', 'sin foto', true);
+INSERT INTO proyecto.usuarios(idusu, nombre, apellido1, apellido2, sexo, f_nac, cedula, telefono, direccion, foto, activo) VALUES (3, 'Mariela', 'Fernandez', 'Perez', 'F', '08/30/1988', '4156789', '591567849', 'Barrio tablada', 'sin foto', false);
+INSERT INTO proyecto.usuarios(idusu, nombre, apellido1, apellido2, sexo, f_nac, cedula, telefono, direccion, foto, activo) VALUES (4, 'Jose ', 'Perez', 'Rivera', 'M', '10/10/2000', '5034563', '591604265', 'Barrio Miraflores', 'sin foto', true);
+INSERT INTO proyecto.docentes(idusu, auxiliar) VALUES (3, true);
+INSERT INTO proyecto.docentes(idusu, auxiliar) VALUES (4, false);
+INSERT INTO proyecto.grupo(idcarr, sigla, nombre, cargahoraria, "plan", periodo, activo, grupo) VALUES (1, 'inf102', 'informatica i', 6, '2016', '1', true, 'g1');
+INSERT INTO proyecto.grupo(idcarr, sigla, nombre, cargahoraria, "plan", periodo, activo, grupo) VALUES (1, 'inf102', 'informatica i', 6, '2016', '1', true, 'g2');
+INSERT INTO proyecto.universitarios(idusu, ru) VALUES (1, 4143);
+INSERT INTO proyecto.universitarios(idusu, ru) VALUES (2, 4145);
