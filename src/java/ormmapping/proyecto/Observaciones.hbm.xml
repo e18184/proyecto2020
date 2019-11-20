@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="proyecto.Observaciones" table="Observaciones" schema="gestion2019" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+				<param name="schema">gestion2019</param>
+			</generator>
+		</id>
+		<many-to-one name="etapas" cascade="lock" column="EtapasID" class="proyecto.Etapas" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="tribunal" cascade="lock" column="TribunalID" class="proyecto.Tribunal" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="fecha" column="Fecha" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="archivo" column="Archivo" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="observaciones" column="Observaciones" type="string" length="255" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

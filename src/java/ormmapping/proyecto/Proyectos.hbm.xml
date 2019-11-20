@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="proyecto.Proyectos" table="Proyectos" schema="gestion2019" lazy="false">
+		<id name="idproyecto" column="ID" type="string">
+			<generator class="assigned">
+			</generator>
+		</id>
+		<many-to-one name="programacion" cascade="lock" column="programacionidprog2" class="proyecto.Programacion" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<many-to-one name="area" cascade="lock" column="AreaID" class="proyecto.Area" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<property name="nota" column="Nota" type="integer" length="10" not-null="true" lazy="false"/>
+		<property name="estado" column="Estado" type="boolean" not-null="true" lazy="false"/>
+		<property name="titulo" column="Titulo" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="resumen" column="Resumen" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="archivo" column="Archivo" type="string" length="255" not-null="false" lazy="false"/>
+		<many-to-one name="programacionidprog" cascade="lock" column="programacionidprog" class="proyecto.Programacion" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+		<set name="ORM_Tribunals" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="ProyectosID" not-null="true"/>
+			<one-to-many class="proyecto.Tribunal"/>
+		</set>
+		<many-to-one name="docentesidusu" cascade="lock" column="docentesidusu" class="proyecto.Docentes" not-null="true" lazy="proxy" access="field">
+		</many-to-one>
+	</class>
+</hibernate-mapping>

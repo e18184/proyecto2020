@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="proyecto.Roles" table="roles" schema="gestion2019" lazy="false">
+		<meta attribute="class-description">
+			Contiene los roles definidos en el sistema
+		</meta>
+		<id name="idrol" column="idrol" type="integer" unsaved-value="0">
+			<generator class="sequence">
+				<param name="sequence">proyecto.roles_idrol_seq</param>
+			</generator>
+		</id>
+		<property name="nombre" column="nombre" type="string" length="40" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Nombre del rol
+			</meta>
+		</property>
+		<property name="activo" column="activo" type="boolean" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				True, vigente. False, dado de baja
+			</meta>
+		</property>
+		<set name="ORM_Idusu" table="usurol" schema="gestion2019" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="idrol" not-null="true"/>
+			<many-to-many column="idusu" class="proyecto.Usuarios">
+			</many-to-many>
+		</set>
+		<set name="ORM_Idmenu" table="rolme" schema="gestion2019" lazy="true" cascade="save-update,lock">
+			<key column="idrol" not-null="true"/>
+			<many-to-many column="idmenu" class="proyecto.Menus">
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

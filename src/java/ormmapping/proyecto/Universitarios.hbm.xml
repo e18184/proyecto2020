@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="proyecto.Universitarios" table="universitarios" schema="gestion2019" lazy="false">
+		<meta attribute="class-description">
+			Tabla de los Universitarios
+		</meta>
+		<id name="idusuId" column="idusu" type="integer">
+			<generator class="foreign">
+				<param name="property">idusu</param>
+			</generator>
+		</id>
+		<one-to-one name="idusu" class="proyecto.Usuarios" cascade="all" constrained="true"/>
+		<property name="ru" column="ru" type="integer" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Registro universitario
+			</meta>
+		</property>
+		<set name="ORM_Programacion" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="idusu" not-null="false"/>
+			<one-to-many class="proyecto.Programacion"/>
+		</set>
+	</class>
+</hibernate-mapping>
