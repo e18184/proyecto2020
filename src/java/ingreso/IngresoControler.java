@@ -29,7 +29,7 @@ import proyecto.ProcesosDAO;
 import org.orm.PersistentException;
 import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
-// las variables sesionadas, son aquellas que yo quiero 
+// las variables sesionadas, son aquellas que yo qu
 // que sus valores se preserven, al pasar de un controlador
 // a otro
 @SessionAttributes({"mismenus","miusuario","rolseleccionado"})
