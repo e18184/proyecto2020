@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author HAUSE
  */
 @Controller 
-@RequestMapping("uproceso.htm")
+//@RequestMapping("uproceso.htm")
 public class UprocesoControler {
     @RequestMapping(method=RequestMethod.GET)
     public ModelAndView listaExamenes() {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.orm.PersistentException;
 public class ListaEstudianteControlador {
+    // http://127.0.0.1:8080/proyecto2020/listaEstudiantes.htm
     @RequestMapping("listaEstudiantes.htm")
     public ModelAndView listaEstudiantes() {
     /*    ModelAndView mav = new ModelAndView();
