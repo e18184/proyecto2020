@@ -5,10 +5,18 @@
  */
 package controlador.proceso;
 
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.orm.PersistentException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import proyecto.Usuarios;
+import proyecto.UsuariosDAO;
+import proyecto.PruebaPersona;
 
 /**
  *
@@ -22,10 +30,29 @@ public class primero {
             
     {   
         
+        // asignar un valor 
         
-        System.out.println("Llego metodo GET");
         ModelAndView mav =new ModelAndView();
-        mav.setViewName("iprimero");
+       
+        
+        // se adiciono esta variable
+        
+        List usuarios = null;
+        try {
+            usuarios =  proyecto.UsuariosDAO.queryUsuarios(null,null); // List 
+            //  select * from Usuarios
+            // where null
+            // order by null
+            
+        } catch (PersistentException ex) {
+            Logger.getLogger(primero.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        mav.addObject("listado",usuarios);
+        
+        
+         mav.setViewName("iprimero");
+        
         return mav;
     }
     
