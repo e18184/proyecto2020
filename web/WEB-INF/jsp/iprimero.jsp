@@ -26,7 +26,7 @@
                         <td> <c:out value="${m.apellido1}"/></td>
                         <td> <c:out value="${m.apellido2}"/></td>
                         <td> <c:out value="${m.sexo}"/></td>
-                        esto es una prueba
+                        esto es una prueba 2
                     </tr> 
                 </c:forEach>
                     
