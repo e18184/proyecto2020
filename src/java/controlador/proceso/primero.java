@@ -39,16 +39,22 @@ public class primero {
         
         List usuarios = null;
         try {
-            usuarios =  proyecto.UsuariosDAO.queryUsuarios(null,null); // List 
+            // controlador; clases que se generaron a partir del diagrama de clases 
+            // DAO metodos genericos
+            // SOLAMENTE USUARIO RICHARD
+            usuarios =  proyecto.UsuariosDAO.queryUsuarios(" idusu=1 OR idusu=4 "," apellido1 DESC "); // List 
+            
             //  select * from Usuarios
             // where null
             // order by null
+            
+             mav.addObject("listado",usuarios);
             
         } catch (PersistentException ex) {
             Logger.getLogger(primero.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        mav.addObject("listado",usuarios);
+       
         
         
          mav.setViewName("iprimero");
