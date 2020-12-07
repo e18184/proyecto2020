@@ -1,10 +1,7 @@
-<%-- 
-    Document   : iprimero
-    Created on : 20-11-2020, 03:06:30 PM
-    Author     : richards
---%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib  prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,5 +10,29 @@
     </head>
     <body>
         <h1>><font size="40">Primero</font></h1>
+         <table border="2">
+            <thead>
+                <tr>
+                    <th>nombre</th>
+                    <th>apellido1</th>
+                    <th>apellido2</th>
+                    <th>sexo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach  items="${listado}" var="m">
+                    <tr>
+                        <td> <c:out value="${m.nombre}"/></td>
+                        <td> <c:out value="${m.apellido1}"/></td>
+                        <td> <c:out value="${m.apellido2}"/></td>
+                        <td> <c:out value="${m.sexo}"/></td>
+                        esto es una prueba
+                    </tr> 
+                </c:forEach>
+                    
+            </tbody>
+            
+        </table>
+
     </body>
 </html>
