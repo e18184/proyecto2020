@@ -8,6 +8,7 @@
         <title>Usuario</title>
     </head>
     <body>
+        <!-- modificado 6-1-2020 -->
         <form:form action="usuario.htm" method="post" commandName="V_usuariorol">
            
             <label>*Usuario</label><form:input path="login" value="${login}"/>
