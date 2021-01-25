@@ -5,78 +5,78 @@ License Type: Evaluation
 -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="proyecto.Usuarios" table="usuarios" schema="gestion2019" lazy="false">
+	<class name="proyecto.Usuarios" table="`usuarios`" schema="gestion2019" lazy="false">
 		<meta attribute="class-description">
 			Contiene los datos de los usuarios del sistema
 		</meta>
-		<id name="idusu" column="idusu" type="integer" unsaved-value="0">
+		<id name="idusu" column="`idusu`" type="integer" unsaved-value="0">
 			<generator class="sequence">
 				<param name="sequence">proyecto.usuarios_idusu_seq</param>
 			</generator>
 		</id>
-		<property name="nombre" column="nombre" type="string" length="40" not-null="true" lazy="false">
+		<property name="nombre" column="`nombre`" type="string" length="40" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Nombre del usuario
 			</meta>
 		</property>
-		<property name="apellido1" column="apellido1" type="string" length="40" not-null="true" lazy="false">
+		<property name="apellido1" column="`apellido1`" type="string" length="40" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Primer apellido
 			</meta>
 		</property>
-		<property name="apellido2" column="apellido2" type="string" length="40" not-null="false" lazy="false">
+		<property name="apellido2" column="`apellido2`" type="string" length="40" not-null="false" lazy="false">
 			<meta attribute="field-description">
 				Segundo apellido
 			</meta>
 		</property>
-		<property name="sexo" column="sexo" type="character" length="1" not-null="true" lazy="false">
+		<property name="sexo" column="`sexo`" type="character" length="1" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				M, masculino; F, femenino
 			</meta>
 		</property>
-		<property name="f_nac" column="f_nac" type="date" not-null="true" lazy="false">
+		<property name="f_nac" column="`f_nac`" type="date" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Fecha de nacimiento
 			</meta>
 		</property>
-		<property name="cedula" column="cedula" type="string" length="15" not-null="true" lazy="false">
+		<property name="cedula" column="`cedula`" type="string" length="15" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				N&#250;mero de identificaci&#243;n personal
 			</meta>
 		</property>
-		<property name="telefono" column="telefono" type="string" length="15" not-null="false" lazy="false">
+		<property name="telefono" column="`telefono`" type="string" length="15" not-null="false" lazy="false">
 			<meta attribute="field-description">
 				Tel&#233;fono principal del usuario
 			</meta>
 		</property>
-		<property name="direccion" column="direccion" type="string" length="60" not-null="false" lazy="false">
+		<property name="direccion" column="`direccion`" type="string" length="60" not-null="false" lazy="false">
 			<meta attribute="field-description">
 				Direcci&#243;n del usuario
 			</meta>
 		</property>
-		<property name="foto" column="foto" type="string" length="60" not-null="true" lazy="false">
+		<property name="foto" column="`foto`" type="string" length="60" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Ruta relativa y nombre de archivo de la foto del usuario
 			</meta>
 		</property>
-		<property name="activo" column="activo" type="boolean" not-null="true" lazy="false">
+		<property name="activo" column="`activo`" type="boolean" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				True, vigente. False, dado de baja
 			</meta>
 		</property>
-		<set name="ORM_Idrol" table="usurol" schema="gestion2019" lazy="true" cascade="save-update,lock">
-			<key column="idusu" not-null="true"/>
-			<many-to-many column="idrol" class="proyecto.Roles">
+		<set name="ORM_Idrol" table="`usurol`" schema="gestion2019" lazy="true" cascade="save-update,lock">
+			<key column="`idusu`" not-null="true"/>
+			<many-to-many column="`idrol`" class="proyecto.Roles">
 			</many-to-many>
 		</set>
 		<set name="ORM_Datos" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="idusu" not-null="true"/>
+			<key column="`idusu`" not-null="true"/>
 			<one-to-many class="proyecto.Datos"/>
 		</set>
 		<one-to-one name="docentes" class="proyecto.Docentes" cascade="save-update,lock" lazy="proxy" access="field"/>
 		<one-to-one name="universitarios" class="proyecto.Universitarios" cascade="save-update,lock" lazy="proxy" access="field"/>
 		<set name="ORM_Anuncioses" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="usuariosidusu" not-null="true"/>
+			<key column="`usuariosidusu`" not-null="true"/>
 			<one-to-many class="proyecto.Anuncios"/>
 		</set>
 	</class>

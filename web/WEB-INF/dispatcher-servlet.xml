@@ -39,6 +39,7 @@
                 <prop key="adicionarestudiantematriculaparalelo.htm">formAdicionarEstudianteMatriculaParalelo </prop>
                 <prop key="listarparaleloasignaaula.htm">formListarParaleloAsignaAula</prop>
                 -->
+                
                 <!-- menus de usuario -->
                 
                 <prop key="usuario.htm">formIngreso</prop>
@@ -48,9 +49,10 @@
                 <prop key="principalcontenedor.htm">formPrincipalContenedor</prop>
                 <prop key="uanadir.htm">formUanadir</prop>
                 <prop key="listaestudiantemateria.htm">formListaEstudianteMateria</prop>
-                <prop key="imiproceso.htm">formImiproceso</prop>
                 <prop key="iprimero.htm">formIprimero</prop>
-                
+                <!--usuario -->
+                <prop key="admUsuarios.htm">formAdmUsuario</prop>
+                <prop key="usuarioAdicionar.htm">formAdicionarUsuario</prop>
             </props>
         </property>
     </bean>
@@ -89,6 +91,8 @@
     <bean name="formPrincipalContenedor" class="principal.PrincipalContenedorControler"/>
     <bean name="formUanadir" class="controlador.usuario.UanadirControler"/>
     <bean name="formListaEstudianteMateria" class="controlador.estudiante.ListaEstudianteMateriaControlador"/>
-    <bean name="formImiproceso" class="controlador.proceso.proceso"/>
     <bean name="formIprimero" class="controlador.proceso.primero"/>
+    <bean name="formAdmUsuario" class="controlador.usuario.controladorUsuario"/>
+     <bean name="formAdicionarUsuario" class="controlador.usuario.controladorAdicionar"/>
+    
 </beans>

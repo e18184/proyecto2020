@@ -40,8 +40,9 @@ public class TopControler {
         System.out.println("Valor de usuario"+usuario.getIdusu());
         model.addAttribute("fmiusuario",usuario);
         
-        //mav.addObject("rolseleccionado",u);
+        
         ModelAndView mav = new ModelAndView("top");
+        mav.addObject("rolseleccionado",usuario);
         mav.addObject("seleccionado", idusu);
         mav.setViewName("top");
         return mav;

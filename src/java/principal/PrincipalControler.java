@@ -28,18 +28,19 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("principal_2")
 // Que parametros 
 // login password idrol
-@SessionAttributes({"mismenus","miusuario","rolseleccionado"})
+@SessionAttributes({"mismenus","miusuario","rolseleccionado","rol2"})
 
 public class PrincipalControler {
    
     @RequestMapping(method=RequestMethod.POST)
-    public ModelAndView principalControlerPost(@RequestParam("idusu") int r,@ModelAttribute("miusuario") Usuarios usuario ) 
+    public ModelAndView principalControlerPost(@RequestParam("idusu") int r,@ModelAttribute("miusuario") Usuarios usuario, Model model ) 
             
     {   
         
         System.out.println("usuario logeado:"+usuario.getIdusu());
         System.out.println("rol seleccionado:"+r);
         Usuarios usu = null;
+        model.addAttribute("rol2",r);
         try {
             usu = (Usuarios)UsuariosDAO.getUsuariosByORMID(usuario.getIdusu());
         } catch (PersistentException ex) {

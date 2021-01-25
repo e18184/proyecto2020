@@ -323,10 +323,6 @@ public class ProyectosDAO {
 	
 	public static boolean deleteAndDissociate(proyecto.Proyectos proyectos)throws PersistentException {
 		try {
-			if (proyectos.getProgramacion() != null) {
-				proyectos.getProgramacion().proyectoses.remove(proyectos);
-			}
-			
 			if (proyectos.getArea() != null) {
 				proyectos.getArea().proyectoses.remove(proyectos);
 			}
@@ -335,14 +331,14 @@ public class ProyectosDAO {
 				proyectos.getProgramacionidprog().proyectos.remove(proyectos);
 			}
 			
-			proyecto.Tribunal[] lTribunalss = proyectos.tribunals.toArray();
-			for(int i = 0; i < lTribunalss.length; i++) {
-				lTribunalss[i].setProyectos(null);
-			}
 			if (proyectos.getDocentesidusu() != null) {
 				proyectos.getDocentesidusu().proyectos.remove(proyectos);
 			}
 			
+			proyecto.Tribunal[] lTribunalss = proyectos.tribunals.toArray();
+			for(int i = 0; i < lTribunalss.length; i++) {
+				lTribunalss[i].setProyectos(null);
+			}
 			return delete(proyectos);
 		}
 		catch(Exception e) {
@@ -353,10 +349,6 @@ public class ProyectosDAO {
 	
 	public static boolean deleteAndDissociate(proyecto.Proyectos proyectos, org.orm.PersistentSession session)throws PersistentException {
 		try {
-			if (proyectos.getProgramacion() != null) {
-				proyectos.getProgramacion().proyectoses.remove(proyectos);
-			}
-			
 			if (proyectos.getArea() != null) {
 				proyectos.getArea().proyectoses.remove(proyectos);
 			}
@@ -365,14 +357,14 @@ public class ProyectosDAO {
 				proyectos.getProgramacionidprog().proyectos.remove(proyectos);
 			}
 			
-			proyecto.Tribunal[] lTribunalss = proyectos.tribunals.toArray();
-			for(int i = 0; i < lTribunalss.length; i++) {
-				lTribunalss[i].setProyectos(null);
-			}
 			if (proyectos.getDocentesidusu() != null) {
 				proyectos.getDocentesidusu().proyectos.remove(proyectos);
 			}
 			
+			proyecto.Tribunal[] lTribunalss = proyectos.tribunals.toArray();
+			for(int i = 0; i < lTribunalss.length; i++) {
+				lTribunalss[i].setProyectos(null);
+			}
 			try {
 				session.delete(proyectos);
 				return true;

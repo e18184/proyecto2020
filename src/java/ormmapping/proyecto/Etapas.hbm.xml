@@ -5,15 +5,15 @@ License Type: Evaluation
 -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="proyecto.Etapas" table="Etapas" schema="gestion2019" lazy="false">
-		<id name="ID" column="ID" type="integer" unsaved-value="0">
+	<class name="proyecto.Etapas" table="`Etapas`" schema="gestion2019" lazy="false">
+		<id name="ID" column="`ID`" type="integer" unsaved-value="0">
 			<generator class="native">
 				<param name="schema">gestion2019</param>
 			</generator>
 		</id>
-		<property name="nombre" column="Nombre" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="nombre" column="`Nombre`" type="string" length="255" not-null="false" lazy="false"/>
 		<set name="ORM_Observacioneses" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="EtapasID" not-null="true"/>
+			<key column="`EtapasID`" not-null="true"/>
 			<one-to-many class="proyecto.Observaciones"/>
 		</set>
 	</class>

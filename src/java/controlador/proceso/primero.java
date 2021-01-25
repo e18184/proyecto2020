@@ -10,27 +10,30 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.orm.PersistentException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import proyecto.Usuarios;
 import proyecto.UsuariosDAO;
-import proyecto.PruebaPersona;
 
 /**
  *
  * @author richards
  */
+@SessionAttributes({"miusuario","rol2"})
 @Controller 
 @RequestMapping("iprimero.htm")
 public class primero {
     @RequestMapping(method=RequestMethod.GET)
-    public ModelAndView principalControlerGet() 
+    public ModelAndView principalControlerGet(@ModelAttribute("miusuario") Usuarios usuario, Model model,@ModelAttribute("rol2") int rolint) 
             
     {   
         
         // asignar un valor 
+        System.out.println("valor leido"+rolint);
         
         ModelAndView mav =new ModelAndView();
        

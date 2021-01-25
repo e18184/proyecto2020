@@ -331,10 +331,6 @@ public class ProgramacionDAO {
 				programacion.getIdcarr().programacion.remove(programacion);
 			}
 			
-			proyecto.Proyectos[] lProyectosess = programacion.proyectoses.toArray();
-			for(int i = 0; i < lProyectosess.length; i++) {
-				lProyectosess[i].setProgramacion(null);
-			}
 			proyecto.Proyectos[] lProyectoss = programacion.proyectos.toArray();
 			for(int i = 0; i < lProyectoss.length; i++) {
 				lProyectoss[i].setProgramacionidprog(null);
@@ -357,10 +353,6 @@ public class ProgramacionDAO {
 				programacion.getIdcarr().programacion.remove(programacion);
 			}
 			
-			proyecto.Proyectos[] lProyectosess = programacion.proyectoses.toArray();
-			for(int i = 0; i < lProyectosess.length; i++) {
-				lProyectosess[i].setProgramacion(null);
-			}
 			proyecto.Proyectos[] lProyectoss = programacion.proyectos.toArray();
 			for(int i = 0; i < lProyectoss.length; i++) {
 				lProyectoss[i].setProgramacionidprog(null);

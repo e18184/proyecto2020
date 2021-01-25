@@ -70,7 +70,9 @@
                 </td>
                 </tr>
          </table>
+                
         </div>
         </footer>
+          el rol es: <c:out value="${rolseleccionado}"></c:out>
     </body>
 </html>
