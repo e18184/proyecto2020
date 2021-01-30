@@ -23,6 +23,8 @@ License Type: Evaluation
 		<property name="show_sql">false</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 		<!-- mapping files -->
+		<mapping resource="ormmapping/gestion2019/V_listarestudiantes.hbm.xml" />
+		<mapping resource="ormmapping/gestion2019/V_listarproyectos.hbm.xml" />
 		<mapping resource="ormmapping/proyecto/Anuncios.hbm.xml" />
 		<mapping resource="ormmapping/proyecto/Area.hbm.xml" />
 		<mapping resource="ormmapping/proyecto/Carreras.hbm.xml" />
@@ -33,7 +35,6 @@ License Type: Evaluation
 		<mapping resource="ormmapping/proyecto/Grupo.hbm.xml" />
 		<mapping resource="ormmapping/proyecto/Menus.hbm.xml" />
 		<mapping resource="ormmapping/proyecto/Observaciones.hbm.xml" />
-		<mapping resource="ormmapping/proyecto/Opciones.hbm.xml" />
 		<mapping resource="ormmapping/proyecto/Procesos.hbm.xml" />
 		<mapping resource="ormmapping/proyecto/Programacion.hbm.xml" />
 		<mapping resource="ormmapping/proyecto/Proyectos.hbm.xml" />

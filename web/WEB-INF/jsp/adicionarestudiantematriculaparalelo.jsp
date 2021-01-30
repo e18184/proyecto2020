@@ -41,7 +41,7 @@
           
           
             <hr>
-            <form:button>Enviar</form:button> <a href="listarestudiantematriculaparalelo.htm"> Cancelar </a>
+            <form:button>Guardar</form:button> <a href="listarestudiantematriculaparalelo.htm"> Cancelar </a>
         </form:form>
         
     </body>

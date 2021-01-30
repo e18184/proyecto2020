@@ -22,10 +22,7 @@ public class Programacion implements Serializable {
 	}
 	
 	private java.util.Set this_getSet (int key) {
-		if (key == ORMConstants.KEY_PROGRAMACION_PROYECTOSES) {
-			return ORM_proyectoses;
-		}
-		else if (key == ORMConstants.KEY_PROGRAMACION_PROYECTOS) {
+		if (key == ORMConstants.KEY_PROGRAMACION_PROYECTOS) {
 			return ORM_proyectos;
 		}
 		
@@ -65,8 +62,6 @@ public class Programacion implements Serializable {
 	
 	private boolean estado;
 	
-	private java.util.Set ORM_proyectoses = new java.util.HashSet();
-	
 	private java.util.Set ORM_proyectos = new java.util.HashSet();
 	
 	/**
@@ -101,10 +96,16 @@ public class Programacion implements Serializable {
 		return gestion;
 	}
 	
+	/**
+	 * carga la nota
+	 */
 	public void setNotafinal(String value) {
 		this.notafinal = value;
 	}
 	
+	/**
+	 * carga la nota
+	 */
 	public String getNotafinal() {
 		return notafinal;
 	}
@@ -164,16 +165,6 @@ public class Programacion implements Serializable {
 	private proyecto.Grupo getORM_Idcarr() {
 		return idcarr;
 	}
-	
-	private void setORM_Proyectoses(java.util.Set value) {
-		this.ORM_proyectoses = value;
-	}
-	
-	private java.util.Set getORM_Proyectoses() {
-		return ORM_proyectoses;
-	}
-	
-	public final proyecto.ProyectosSetCollection proyectoses = new proyecto.ProyectosSetCollection(this, _ormAdapter, ORMConstants.KEY_PROGRAMACION_PROYECTOSES, ORMConstants.KEY_PROYECTOS_PROGRAMACION, ORMConstants.KEY_MUL_ONE_TO_MANY);
 	
 	private void setORM_Proyectos(java.util.Set value) {
 		this.ORM_proyectos = value;

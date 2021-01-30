@@ -5,37 +5,37 @@ License Type: Evaluation
 -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="proyecto.Carreras" table="carreras" schema="gestion2019" lazy="false">
+	<class name="proyecto.Carreras" table="`carreras`" schema="gestion2019" lazy="false">
 		<meta attribute="class-description">
 			Contiene las carreras registradas en el sistema
 		</meta>
-		<id name="idcarr" column="idcarr" type="integer" unsaved-value="0">
+		<id name="idcarr" column="`idcarr`" type="integer" unsaved-value="0">
 			<generator class="sequence">
 				<param name="sequence">proyecto.carreras_idcarr_seq</param>
 			</generator>
 		</id>
-		<property name="nombre" column="nombre" type="string" length="40" not-null="true" lazy="false">
+		<property name="nombre" column="`nombre`" type="string" length="40" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Nombre de la carrera
 			</meta>
 		</property>
-		<property name="direccion" column="direccion" type="string" length="60" not-null="false" lazy="false">
+		<property name="direccion" column="`direccion`" type="string" length="60" not-null="false" lazy="false">
 			<meta attribute="field-description">
 				Direcci&#243;n de la carrera
 			</meta>
 		</property>
-		<property name="telefono" column="telefono" type="string" length="15" not-null="false" lazy="false">
+		<property name="telefono" column="`telefono`" type="string" length="15" not-null="false" lazy="false">
 			<meta attribute="field-description">
 				Tel&#233;fono principal de la carrera
 			</meta>
 		</property>
-		<property name="activo" column="activo" type="boolean" not-null="true" lazy="false">
+		<property name="activo" column="`activo`" type="boolean" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				True, vigente. False, dado de baja
 			</meta>
 		</property>
 		<set name="ORM_Materias" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="idcarr" not-null="true"/>
+			<key column="`idcarr`" not-null="true"/>
 			<one-to-many class="proyecto.Grupo"/>
 		</set>
 	</class>

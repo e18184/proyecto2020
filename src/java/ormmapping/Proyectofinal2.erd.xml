@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<Model quotesql="1" tablecharset="" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
+<Model quotesql="2" tablecharset="" mysql_version="504" mssql_version="2005" derby_version="106" ingres_version="9">
   <Entity name="carreras" schema="gestion2019" Unlogged="false" PKConstraintName="carreras_pkey" PKClustered="0">
     <Column name="idcarr">
       <PrimaryKey>true</PrimaryKey>
@@ -182,17 +182,6 @@
       <Unique>false</Unique>
       <Index>false</Index>
       <Comment>Año que se dicta la materia</Comment>
-      <UserTypes/>
-    </Column>
-    <Column name="materiasparalelo">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>false</ForeignKey>
-      <Type>42</Type>
-      <Length>1</Length>
-      <Nullable>true</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
       <UserTypes/>
     </Column>
     <Column name="grupoid_grupo">
@@ -850,18 +839,6 @@
       <Index>false</Index>
       <UserTypes/>
     </Column>
-    <Column name="programacionidprog2">
-      <PrimaryKey>false</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>proyecto.programacion.idprog</ReferencedColumn>
-      <Type>9</Type>
-      <Length>0</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
     <Column name="AreaID">
       <PrimaryKey>false</PrimaryKey>
       <ForeignKey>true</ForeignKey>
@@ -1214,6 +1191,24 @@
     gestion2019.usurol ur,
     gestion2019.roles r
   WHERE ((u.idusu = ur.idusu) AND (ur.idrol = r.idrol));" schema="gestion2019" Materialized="false"/>
+  <View name="v_listarestudiantes" CreateStmt="create view v_listarestudiantes as  SELECT row_number() OVER () AS id,
+    uni.ru,
+    usu.nombre,
+    usu.apellido1,
+    usu.apellido2
+   FROM gestion2019.universitarios uni,
+    gestion2019.usuarios usu
+  WHERE (usu.idusu = uni.idusu);" schema="gestion2019" Materialized="false"/>
+  <View name="v_listarproyectos" CreateStmt="create view v_listarproyectos as  SELECT row_number() OVER () AS id,
+    usu.idusu AS usuario,
+    uni.ru AS universitario,
+    p.&quot;Titulo&quot;,
+    p.&quot;Nota&quot;
+   FROM gestion2019.&quot;Proyectos&quot; p,
+    gestion2019.universitarios uni,
+    gestion2019.programacion prog,
+    gestion2019.usuarios usu
+  WHERE ((p.programacionidprog = prog.idprog) AND (usu.idusu = prog.idusu) AND (usu.idusu = uni.idusu));" schema="gestion2019" Materialized="false"/>
   <ForeignKey name="fkdatos267216">
     <ReferenceTable>datos</ReferenceTable>
     <ReferenceSchema>gestion2019</ReferenceSchema>
@@ -1492,18 +1487,6 @@
     </Columns>
     <RefColumns>
       <Column>idusu</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="programa">
-    <ReferenceTable>Proyectos</ReferenceTable>
-    <ReferenceSchema>gestion2019</ReferenceSchema>
-    <ReferencedTable>programacion</ReferencedTable>
-    <ReferencedSchema>gestion2019</ReferencedSchema>
-    <Columns>
-      <Column>programacionidprog2</Column>
-    </Columns>
-    <RefColumns>
-      <Column>idprog</Column>
     </RefColumns>
   </ForeignKey>
   <ForeignKey name="FKAnuncios346335">

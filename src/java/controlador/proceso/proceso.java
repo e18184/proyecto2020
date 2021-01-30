@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import proyecto.Usuarios;
-import proyecto.PruebaPersona;
+/*import proyecto.PruebaPersona;
 @SessionAttributes({"pruebapersona"})
 /**
  *
@@ -20,7 +20,7 @@ import proyecto.PruebaPersona;
  */
 @Controller
 @RequestMapping("imiproceso.htm")
-public class proceso {
+public class proceso {/*
    @RequestMapping(method=RequestMethod.GET)
     public ModelAndView principalControlerGet(@ModelAttribute("pruebapersona") PruebaPersona pruebapersona ) 
             
@@ -32,5 +32,5 @@ public class proceso {
         ModelAndView mav =new ModelAndView();
         mav.setViewName("imiproceso");
         return mav;
-    }
+    }*/
 }

@@ -1,0 +1,83 @@
+/**
+ * "Visual Paradigm: DO NOT MODIFY THIS FILE!"
+ * 
+ * This is an automatic generated file. It will be regenerated every time 
+ * you generate persistence class.
+ * 
+ * Modifying its content may cause the program not work, or your work may lost.
+ */
+
+/**
+ * Licensee: 
+ * License Type: Evaluation
+ */
+package gestion2019;
+
+import java.io.Serializable;
+public class V_listarestudiantes implements Serializable {
+	public V_listarestudiantes() {
+	}
+	
+	private long id;
+	
+	private Integer ru;
+	
+	private String nombre;
+	
+	private String apellido1;
+	
+	private String apellido2;
+	
+	private void setId(long value) {
+		this.id = value;
+	}
+	
+	public long getId() {
+		return id;
+	}
+	
+	public long getORMID() {
+		return getId();
+	}
+	
+	private void setRu(int value) {
+		setRu(new Integer(value));
+	}
+	
+	private void setRu(Integer value) {
+		this.ru = value;
+	}
+	
+	public Integer getRu() {
+		return ru;
+	}
+	
+	private void setNombre(String value) {
+		this.nombre = value;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	private void setApellido1(String value) {
+		this.apellido1 = value;
+	}
+	
+	public String getApellido1() {
+		return apellido1;
+	}
+	
+	private void setApellido2(String value) {
+		this.apellido2 = value;
+	}
+	
+	public String getApellido2() {
+		return apellido2;
+	}
+	
+	public String toString() {
+		return String.valueOf(getId());
+	}
+	
+}

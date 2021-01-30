@@ -50,7 +50,11 @@
                 <prop key="listaestudiantemateria.htm">formListaEstudianteMateria</prop>
                 <prop key="imiproceso.htm">formImiproceso</prop>
                 <prop key="iprimero.htm">formIprimero</prop>
-                
+                <prop key="iListarEstudiantes.htm">formIcargarnotas</prop> 
+                <prop key="iListarProyectos.htm">formIlistarProyectos</prop>
+                <prop key="calificar.htm">formIcalificar</prop>
+                <prop key="listarNotasProyectos.htm">formIlistarNotasProyectos</prop> 
+                <prop key="modificarNotas.htm">formImodificarNotasProyectos</prop>
             </props>
         </property>
     </bean>
@@ -91,4 +95,9 @@
     <bean name="formListaEstudianteMateria" class="controlador.estudiante.ListaEstudianteMateriaControlador"/>
     <bean name="formImiproceso" class="controlador.proceso.proceso"/>
     <bean name="formIprimero" class="controlador.proceso.primero"/>
+    <bean name="formIcargarnotas" class="controlador.cargarnotas.listarEstudiantesCargarNotasControlador"/>
+    <bean name="formIlistarProyectos" class="controlador.cargarnotas.listarProyectosCargarNotasControlador"/>
+    <bean name="formIcalificar" class="controlador.cargarnotas.calificarCargarNotasControlador"/>
+    <bean name="formIlistarNotasProyectos" class="controlador.cargarnotas.listarNotasProyectosCargarNotasControlador"/>
+    <bean name="formImodificarNotasProyectos" class="controlador.cargarnotas.modificarNotasCargarNotasControlador"/>
 </beans>

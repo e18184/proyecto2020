@@ -5,33 +5,33 @@ License Type: Evaluation
 -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="proyecto.Procesos" table="procesos" schema="gestion2019" lazy="false">
+	<class name="proyecto.Procesos" table="`procesos`" schema="gestion2019" lazy="false">
 		<meta attribute="class-description">
 			Contiene las URLs relativas de todos los procesos u operaciones implementadas, a los que los usuarios acceden desde el navegador.
 		</meta>
-		<id name="idpro" column="idpro" type="integer" unsaved-value="0">
+		<id name="idpro" column="`idpro`" type="integer" unsaved-value="0">
 			<generator class="sequence">
 				<param name="sequence">proyecto.procesos_idpro_seq</param>
 			</generator>
 		</id>
-		<property name="nombre" column="nombre" type="string" length="40" not-null="true" lazy="false">
+		<property name="nombre" column="`nombre`" type="string" length="40" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				Nombre del proceso
 			</meta>
 		</property>
-		<property name="enlace" column="enlace" type="string" length="40" not-null="true" lazy="false">
+		<property name="enlace" column="`enlace`" type="string" length="40" not-null="true" lazy="false">
 			<meta attribute="field-description">
 				URL relativa del proceso
 			</meta>
 		</property>
-		<property name="descripcion" column="descripcion" type="string" length="60" not-null="false" lazy="false">
+		<property name="descripcion" column="`descripcion`" type="string" length="60" not-null="false" lazy="false">
 			<meta attribute="field-description">
 				Descripci&#243;n del proceso u operaci&#243;n
 			</meta>
 		</property>
-		<set name="ORM_Idmenu" table="mepro" schema="gestion2019" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="idpro" not-null="true"/>
-			<many-to-many column="idmenu" class="proyecto.Menus">
+		<set name="ORM_Idmenu" table="`mepro`" schema="gestion2019" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`idpro`" not-null="true"/>
+			<many-to-many column="`idmenu`" class="proyecto.Menus">
 			</many-to-many>
 		</set>
 	</class>

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import proyecto.Usuarios;
 import proyecto.UsuariosDAO;
-import proyecto.PruebaPersona;
+/*import proyecto.PruebaPersona;
 
 /**
  *

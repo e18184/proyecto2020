@@ -19,7 +19,6 @@ ALTER TABLE "gestion2019"."Proyectos" DROP CONSTRAINT "programacionproyectos";
 ALTER TABLE "gestion2019"."Proyectos" DROP CONSTRAINT "tutor";
 ALTER TABLE "gestion2019"."Tribunal" DROP CONSTRAINT "Tribunal";
 ALTER TABLE "gestion2019"."Tribunal" DROP CONSTRAINT "Tribunal2";
-ALTER TABLE "gestion2019"."Proyectos" DROP CONSTRAINT "programa";
 ALTER TABLE "gestion2019"."Anuncios" DROP CONSTRAINT "FKAnuncios346335";
 DROP VIEW IF EXISTS "gestion2019"."v_usuariorol";
 DROP TABLE IF EXISTS "gestion2019"."carreras" CASCADE;
@@ -222,16 +221,15 @@ COMMENT ON TABLE "gestion2019"."usurol" IS 'Relaciona las tablas Usuarios con Ro
 COMMENT ON COLUMN "gestion2019"."usurol"."idusu" IS 'Referencia a la tabla Usuarios';
 COMMENT ON COLUMN "gestion2019"."usurol"."idrol" IS 'Referencia a la tabla Roles';
 CREATE TABLE "gestion2019"."Proyectos" (
-  "ID"                  varchar(255) NOT NULL, 
-  "programacionidprog2" int4 NOT NULL, 
-  "AreaID"              int4 NOT NULL, 
-  "Nota"                int4 NOT NULL, 
-  "Estado"              bool NOT NULL, 
-  "Titulo"              varchar(255), 
-  "Resumen"             varchar(255), 
-  "Archivo"             varchar(255), 
-  "programacionidprog"  int4 NOT NULL, 
-  "docentesidusu"       int4 NOT NULL, 
+  "ID"                 varchar(255) NOT NULL, 
+  "AreaID"             int4 NOT NULL, 
+  "Nota"               int4 NOT NULL, 
+  "Estado"             bool NOT NULL, 
+  "Titulo"             varchar(255), 
+  "Resumen"            varchar(255), 
+  "Archivo"            varchar(255), 
+  "programacionidprog" int4 NOT NULL, 
+  "docentesidusu"      int4 NOT NULL, 
   PRIMARY KEY ("ID"));
 CREATE TABLE "gestion2019"."Tribunal" (
   "ID"            SERIAL NOT NULL, 
@@ -299,7 +297,6 @@ ALTER TABLE "gestion2019"."Proyectos" ADD CONSTRAINT "programacionproyectos" FOR
 ALTER TABLE "gestion2019"."Proyectos" ADD CONSTRAINT "tutor" FOREIGN KEY ("docentesidusu") REFERENCES "gestion2019"."docentes" ("idusu");
 ALTER TABLE "gestion2019"."Tribunal" ADD CONSTRAINT "Tribunal" FOREIGN KEY ("ProyectosID") REFERENCES "gestion2019"."Proyectos" ("ID");
 ALTER TABLE "gestion2019"."Tribunal" ADD CONSTRAINT "Tribunal2" FOREIGN KEY ("docentesidusu") REFERENCES "gestion2019"."docentes" ("idusu");
-ALTER TABLE "gestion2019"."Proyectos" ADD CONSTRAINT "programa" FOREIGN KEY ("programacionidprog2") REFERENCES "gestion2019"."programacion" ("idprog");
 ALTER TABLE "gestion2019"."Anuncios" ADD CONSTRAINT "FKAnuncios346335" FOREIGN KEY ("usuariosidusu") REFERENCES "gestion2019"."usuarios" ("idusu");
 INSERT INTO "gestion2019"."carreras"("idcarr", "nombre", "direccion", "telefono", "activo") VALUES (1, 'Informatica', 'campus tejar', '6640265', true);
 INSERT INTO "gestion2019"."carreras"("idcarr", "nombre", "direccion", "telefono", "activo") VALUES (2, 'Civil', 'campus universitario', '6644444', true);

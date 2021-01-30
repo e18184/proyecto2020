@@ -5,19 +5,19 @@ License Type: Evaluation
 -->
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="proyecto.Tribunal" table="Tribunal" schema="gestion2019" lazy="false">
-		<id name="ID" column="ID" type="integer" unsaved-value="0">
+	<class name="proyecto.Tribunal" table="`Tribunal`" schema="gestion2019" lazy="false">
+		<id name="ID" column="`ID`" type="integer" unsaved-value="0">
 			<generator class="native">
 				<param name="schema">gestion2019</param>
 			</generator>
 		</id>
-		<property name="memorandum" column="Memorandum" type="string" length="255" not-null="false" lazy="false"/>
-		<many-to-one name="ORM_Proyectos" cascade="lock" column="ProyectosID" class="proyecto.Proyectos" not-null="true" lazy="false">
+		<property name="memorandum" column="`Memorandum`" type="string" length="255" not-null="false" lazy="false"/>
+		<many-to-one name="ORM_Proyectos" cascade="lock" column="`ProyectosID`" class="proyecto.Proyectos" not-null="true" lazy="false">
 		</many-to-one>
-		<many-to-one name="ORM_Docentes" cascade="lock" column="docentesidusu" class="proyecto.Docentes" not-null="true" lazy="false">
+		<many-to-one name="ORM_Docentes" cascade="lock" column="`docentesidusu`" class="proyecto.Docentes" not-null="true" lazy="false">
 		</many-to-one>
 		<set name="ORM_Observacioneses" lazy="true" cascade="save-update,lock" inverse="true">
-			<key column="TribunalID" not-null="true"/>
+			<key column="`TribunalID`" not-null="true"/>
 			<one-to-many class="proyecto.Observaciones"/>
 		</set>
 	</class>

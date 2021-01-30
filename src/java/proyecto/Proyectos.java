@@ -48,16 +48,12 @@ public class Proyectos implements Serializable {
 			this.area = (proyecto.Area) owner;
 		}
 		
-		else if (key == ORMConstants.KEY_PROYECTOS_PROGRAMACION) {
-			this.programacion = (proyecto.Programacion) owner;
+		else if (key == ORMConstants.KEY_PROYECTOS_DOCENTESIDUSU) {
+			this.docentesidusu = (proyecto.Docentes) owner;
 		}
 		
 		else if (key == ORMConstants.KEY_PROYECTOS_PROGRAMACIONIDPROG) {
 			this.programacionidprog = (proyecto.Programacion) owner;
-		}
-		
-		else if (key == ORMConstants.KEY_PROYECTOS_DOCENTESIDUSU) {
-			this.docentesidusu = (proyecto.Docentes) owner;
 		}
 	}
 	
@@ -74,8 +70,6 @@ public class Proyectos implements Serializable {
 	
 	private String idproyecto;
 	
-	private proyecto.Programacion programacion;
-	
 	private proyecto.Area area;
 	
 	private int nota;
@@ -90,9 +84,9 @@ public class Proyectos implements Serializable {
 	
 	private proyecto.Programacion programacionidprog;
 	
-	private java.util.Set ORM_tribunals = new java.util.HashSet();
-	
 	private proyecto.Docentes docentesidusu;
+	
+	private java.util.Set ORM_tribunals = new java.util.HashSet();
 	
 	public void setIdproyecto(String value) {
 		this.idproyecto = value;
@@ -212,28 +206,28 @@ public class Proyectos implements Serializable {
 		return area;
 	}
 	
-	public void setProgramacion(proyecto.Programacion value) {
-		if (programacion != null) {
-			programacion.proyectoses.remove(this);
+	public void setDocentesidusu(proyecto.Docentes value) {
+		if (docentesidusu != null) {
+			docentesidusu.proyectos.remove(this);
 		}
 		if (value != null) {
-			value.proyectoses.add(this);
+			value.proyectos.add(this);
 		}
 	}
 	
-	public proyecto.Programacion getProgramacion() {
-		return programacion;
+	public proyecto.Docentes getDocentesidusu() {
+		return docentesidusu;
 	}
 	
 	/**
 	 * This method is for internal use only.
 	 */
-	public void setORM_Programacion(proyecto.Programacion value) {
-		this.programacion = value;
+	public void setORM_Docentesidusu(proyecto.Docentes value) {
+		this.docentesidusu = value;
 	}
 	
-	private proyecto.Programacion getORM_Programacion() {
-		return programacion;
+	private proyecto.Docentes getORM_Docentesidusu() {
+		return docentesidusu;
 	}
 	
 	public void setProgramacionidprog(proyecto.Programacion value) {
@@ -258,30 +252,6 @@ public class Proyectos implements Serializable {
 	
 	private proyecto.Programacion getORM_Programacionidprog() {
 		return programacionidprog;
-	}
-	
-	public void setDocentesidusu(proyecto.Docentes value) {
-		if (docentesidusu != null) {
-			docentesidusu.proyectos.remove(this);
-		}
-		if (value != null) {
-			value.proyectos.add(this);
-		}
-	}
-	
-	public proyecto.Docentes getDocentesidusu() {
-		return docentesidusu;
-	}
-	
-	/**
-	 * This method is for internal use only.
-	 */
-	public void setORM_Docentesidusu(proyecto.Docentes value) {
-		this.docentesidusu = value;
-	}
-	
-	private proyecto.Docentes getORM_Docentesidusu() {
-		return docentesidusu;
 	}
 	
 	public String toString() {
