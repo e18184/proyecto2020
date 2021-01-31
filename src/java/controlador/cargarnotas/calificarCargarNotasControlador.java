@@ -19,7 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 import proyecto.Proyectos;
-
+import proyecto.ProyectosDAO;
+import proyecto.Docentes;
+import proyecto.DocentesDAO;
+import proyecto.Programacion;
+import proyecto.ProgramacionDAO;
+import proyecto.Area;
+import proyecto.AreaDAO;
 /**
  *
  * @author Usuario
@@ -66,27 +72,15 @@ public class calificarCargarNotasControlador {
         
         try {
             Proyectos proy= proyecto.ProyectosDAO.getProyectosByORMID(p.getIdproyecto());
-            
-            //p.setIdproyecto(p.getIdproyecto());
-            p.setArea(proy.getArea());
-            p.setTitulo(p.getTitulo());
-            p.setEstado(p.getEstado());
-            p.setNota(p.getNota()); 
-            p.setArchivo(proy.getArchivo());
-            p.setResumen(proy.getResumen());
-            
-            p.setProgramacionidprog(proy.getProgramacionidprog());
-            p.setDocentesidusu(proy.getDocentesidusu());
-            proyecto.ProyectosDAO.save(p);
-        //System.out.println(p.getNota());
-         
-             //System.out.println(p.getNota());
+            proy.setNota(p.getNota()); 
+            proyecto.ProyectosDAO.evict(proy);
+            proyecto.ProyectosDAO.save(proy);
          
         } catch (PersistentException ex) {
             Logger.getLogger(calificarCargarNotasControlador.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("hola");
-        return new ModelAndView("redirect:listarNotasProyectos.htm");
+        return new ModelAndView("redirect:iListarProyectos.htm?id="+p.getIdproyecto());
     }
     //}
 }
